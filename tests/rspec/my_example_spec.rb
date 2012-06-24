@@ -59,5 +59,21 @@ describe "XmlChecker" do
     parse_xml(" <volume> <file/> < <file/> </volume> ").should == false
   end
 
-
+  it "should return 'true' for valid xml with attribute 'name' " do
+    parse_xml('
+      <volume>
+        < file name="test.txt" / >
+        < folder name="42">
+          < file name = "cat.jpg"/>
+          < folder name = "Downloads">
+          </folder>
+        </folder>
+        <file name = "README.FULLY!"/>
+        <folder  name = "Trash">
+          <folder name = "Video">
+          </folder>
+          <file  name = "WindowsLogo.gif"/>
+        </folder>
+      </volume> ').should == true
+  end
 end
