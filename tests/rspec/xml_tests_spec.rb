@@ -45,8 +45,12 @@ describe "XmlChecker" do
       <file/><file/><file/><file/><file/><file/></volume>").should == true
   end
 
-  it "should return 'false' for the empty string with delimiters" do
-    parse_xml("   ").should == false
+  it "should return 'true' for the empty string with delimiters" do
+    parse_xml("   ").should == true
+  end
+
+  it "should return 'false' for string with non-delimiters" do
+    parse_xml(' a d f g h').should == false
   end
 
   it "should return 'true' for valid xml with delimiters" do
